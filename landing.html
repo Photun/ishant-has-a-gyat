@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Launchpad Skills is a premium career acceleration platform for ambitious learners seeking structured, job-ready digital skill development.">
+  <title>Launchpad Skills</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121936;
+      --panel-2: #f7f8fc;
+      --text: #e9edf7;
+      --muted: #b7bfd3;
+      --dark: #101321;
+      --accent: #7c5cff;
+      --accent-2: #ffb84d;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 20px 60px rgba(0,0,0,0.28);
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #0a0f1f 0%, #10162d 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--border);
+      background: rgba(7, 10, 20, 0.72);
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar .container,
+    .nav .container,
+    .hero .container,
+    .section .container,
+    .footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .topbar .container {
+      padding: 0.8rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(10, 15, 31, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav .container {
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), #5b8cff);
+      box-shadow: var(--shadow);
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: transform 0.18s ease, opacity 0.18s ease, background 0.18s ease;
+    }
+
+    .button:hover { transform: translateY(-1px); }
+    .button.primary { background: linear-gradient(135deg, var(--accent), #5a78ff); }
+    .button.secondary { border-color: var(--border); color: var(--text); background: rgba(255,255,255,0.03); }
+    .button.light { background: var(--panel-2); color: var(--dark); }
+
+    .hero {
+      padding: 5rem 0 4rem;
+    }
+
+    .hero .container {
+      align-items: stretch;
+      gap: 2rem;
+    }
+
+    .hero-copy,
+    .hero-card {
+      flex: 1 1 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 58ch;
+      margin: 1.25rem 0 1.75rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.8rem;
+    }
+
+    .metric {
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mock-window {
+      border-radius: 22px;
+      overflow: hidden;
+      background: #ffffff;
+      color: #111827;
+    }
+
+    .mock-top {
+      display: flex;
+      gap: 0.45rem;
+      padding: 0.8rem 1rem;
+      background: #f3f4f6;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .mock-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #d1d5db;
+    }
+
+    .mock-body {
+      padding: 1.25rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .mock-badge {
+      display: inline-block;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #4f46e5;
+      font-size: 0.8rem;
+      font-weight: 700;
+      width: fit-content;
+    }
+
+    .mock-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .mock-text {
+      color: #4b5563;
+    }
+
+    .mock-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .mock-tile {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 1rem;
+      background: #fff;
+    }
+
+    .mock-tile strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 1rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section.light {
+      background: var(--panel-2);
+      color: var(--dark);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .section-header p {
+      margin: 0;
+      max-width: 46ch;
+      color: inherit;
+      opacity: 0.72;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .light .card {
+      background: #ffffff;
+      border-color: rgba(16,19,33,0.08);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: rgba(124, 92, 255, 0.12);
+      color: var(--accent);
+    }
+
+    .card h3 {
+      margin: 0 0 0.7rem;
+      font-size: 1.35rem;
+    }
+
+    .card p {
+      margin: 0 0 1.15rem;
+      color: inherit;
+      opacity: 0.76;
+    }
+
+    .meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      opacity: 0.8;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(128,128,128,0.14);
+      margin-top: auto;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .feature-panel {
+      border-radius: 28px;
+      padding: 2rem;
+      background: linear-gradient(135deg, #141b38, #0c1329);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-panel h3 {
+      margin-top: 0;
+      font-size: 2rem;
+      line-height: 1.05;
+    }
+
+    .feature-panel p {
+      color: var(--muted);
+      max-width: 50ch;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 0.9rem;
+      margin-top: 1.4rem;
+    }
+
+    .feature-item {
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+    }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .alt-panel {
+      border-radius: 28px;
+      padding: 2rem;
+      background: #ffffff;
+      color: var(--dark);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    .alt-panel h3 { margin-top: 0; font-size: 1.8rem; }
+    .alt-panel p { color: #475569; }
+
+    .bullet-list {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1.1rem;
+    }
+
+    .bullet {
+      padding: 0.95rem 1rem;
+      border-radius: 16px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+    }
+
+    .cta-block {
+      border-radius: 28px;
+      padding: 2.2rem;
+      background: linear-gradient(135deg, rgba(124,92,255,0.16), rgba(255,184,77,0.14));
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .cta-block h2 {
+      margin: 0 0 0.8rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    .cta-block p {
+      color: var(--muted);
+      max-width: 52ch;
+      margin: 0 auto 1.4rem;
+    }
+
+    .footer {
+      padding: 2.2rem 0 3rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer .container {
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero .container,
+      .split,
+      .grid-3 {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-proof {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar .container,
+      .nav .container,
+      .section-header,
+      .footer .container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-actions {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .mock-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div>Selective programs for ambitious learners</div>
+      <div>Applications reviewed on a rolling basis</div>
+    </div>
+  </div>
+
+  <header class="nav">
+    <div class="container">
+      <a class="brand" href="#top">
+        <span class="brand-mark">L</span>
+        <span>Launchpad Skills</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#programs">Programs</a>
+        <a href="#intensives">Intensives</a>
+        <a href="#why">Why us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="button secondary" href="#programs">Explore programs</a>
+        <a class="button primary" href="#contact">Apply now</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-copy">
+          <div class="eyebrow">Premium learning, built for serious momentum</div>
+          <h1>Build job-ready digital skills with clarity.</h1>
+          <p>
+            Structured programs, guided projects, and selective mentorship for learners who want depth, not noise. Launchpad Skills is designed for people who care about rigor, fluency, and measurable growth.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#programs">Explore programs</a>
+            <a class="button secondary" href="#contact">Book a consultation</a>
+          </div>
+          <div class="hero-proof">
+            <div class="metric">
+              <strong>Selective</strong>
+              <span>Small cohorts with high standards and focused support</span>
+            </div>
+            <div class="metric">
+              <strong>Applied</strong>
+              <span>Project-based learning built around execution, not passive watching</span>
+            </div>
+            <div class="metric">
+              <strong>Career-facing</strong>
+              <span>Programs shaped around practical skill and portfolio-quality work</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="mock-window">
+            <div class="mock-top">
+              <span class="mock-dot"></span>
+              <span class="mock-dot"></span>
+              <span class="mock-dot"></span>
+            </div>
+            <div class="mock-body">
+              <span class="mock-badge">Cohort Preview</span>
+              <div class="mock-title">A tighter path from ambition to capability.</div>
+              <div class="mock-text">A premium learning experience centered on structured instruction, guided execution, and standards that push your work forward.</div>
+              <div class="mock-grid">
+                <div class="mock-tile">
+                  <strong>UX/UI Design</strong>
+                  <span>Interface systems, user flows, portfolio-ready output</span>
+                </div>
+                <div class="mock-tile">
+                  <strong>Front-End Foundations</strong>
+                  <span>Semantic structure, clean styling, modern web fluency</span>
+                </div>
+                <div class="mock-tile">
+                  <strong>Product Strategy</strong>
+                  <span>Research, prioritization, collaboration, judgment</span>
+                </div>
+                <div class="mock-tile">
+                  <strong>Live Intensives</strong>
+                  <span>Focused sessions for skill sharpening and momentum</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light" id="programs">
+      <div class="container" style="display:block;">
+        <div class="section-header">
+          <div>
+            <h2>Choose your path.</h2>
+          </div>
+          <p>Focused programs designed to help serious learners build practical skill, strong judgment, and portfolio-ready work.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <span class="tag">Design</span>
+            <h3>UX/UI Design</h3>
+            <p>Design intuitive digital products through a curriculum centered on interface systems, user experience thinking, and portfolio-quality execution.</p>
+            <div class="meta">
+              <span>10 weeks</span>
+              <span>Selective cohort</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <span class="tag">Development</span>
+            <h3>Front-End Foundations</h3>
+            <p>Build a durable understanding of how modern interfaces are structured, styled, and refined across real-world web experiences.</p>
+            <div class="meta">
+              <span>8 weeks</span>
+              <span>Project-based</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <span class="tag">Product</span>
+            <h3>Product Strategy</h3>
+            <p>Learn how strong product teams think through prioritization, research, communication, and high-leverage decision-making.</p>
+            <div class="meta">
+              <span>8 weeks</span>
+              <span>Application required</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="intensives">
+      <div class="container" style="display:block;">
+        <div class="split">
+          <div class="feature-panel">
+            <h3>Live intensives for focused skill development.</h3>
+            <p>Join high-impact sessions built to sharpen practical knowledge, expose industry expectations, and accelerate your learning with clear, applied instruction.</p>
+            <div class="feature-list">
+              <div class="feature-item">
+                <strong>High-signal instruction</strong>
+                <span>Clear frameworks, practical walkthroughs, and fewer distractions.</span>
+              </div>
+              <div class="feature-item">
+                <strong>Deliberate pace</strong>
+                <span>Designed for learners who prefer depth over content overload.</span>
+              </div>
+              <div class="feature-item">
+                <strong>Professional expectations</strong>
+                <span>Sessions reflect how strong work is reviewed, discussed, and improved.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="alt-panel">
+            <h3>What learners can expect</h3>
+            <p>Clear structure. Serious standards. Practical growth you can measure in the quality of your thinking and work.</p>
+            <div class="bullet-list">
+              <div class="bullet">Smaller, more focused learning environments</div>
+              <div class="bullet">Guided project work with stronger feedback loops</div>
+              <div class="bullet">Less passive content, more applied execution</div>
+              <div class="bullet">A stronger body of work by the end of each program</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section light" id="why">
+      <div class="container" style="display:block;">
+        <div class="section-header">
+          <div>
+            <h2>Why Launchpad Skills</h2>
+          </div>
+          <p>Built for learners who want a more disciplined, career-facing path into digital work.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>Selective, structured learning</h3>
+            <p>Programs are designed for learners who value rigor, consistency, and meaningful outcomes.</p>
+          </article>
+          <article class="card">
+            <h3>Built around applied work</h3>
+            <p>You will spend less time consuming content and more time developing judgment through guided execution.</p>
+          </article>
+          <article class="card">
+            <h3>Career-facing by design</h3>
+            <p>Every program emphasizes practical fluency, stronger communication, and portfolio-relevant work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container" style="display:block;">
+        <div class="cta-block">
+          <h2>Get thoughtful updates, not noise.</h2>
+          <p>Occasional notes on new programs, live sessions, and curated opportunities for learners who want to move with intention.</p>
+          <div class="hero-actions" style="justify-content:center; margin-bottom:0;">
+            <a class="button light" href="mailto:support@launchpadskills.com">Contact admissions</a>
+            <a class="button secondary" href="#programs">Review programs</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div>
+        <strong style="color: var(--text);">Launchpad Skills</strong><br>
+        support@launchpadskills.com
+      </div>
+      <div>© 2026 Launchpad Skills. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
